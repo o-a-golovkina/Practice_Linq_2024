@@ -85,12 +85,16 @@ namespace Practice_Linq_2024
         static void Query3(List<FootballGame> games)
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
-
-            var selectedGames = games;   // Корегуємо запит !!!
+            DateTime dateFrom = new(2021, 1, 1);
+            DateTime dateTo = new(2022, 1, 1);
+            var selectedGames = games.Where(p => p.Home_team == "France" && p.Country == "France" && (p.Date >= dateFrom && p.Date < dateTo) && p.Home_score == p.Away_score).OrderBy(p => p.Date);   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
-
+            foreach (var game in selectedGames)
+            {
+                Console.WriteLine($"{game.Date:dd.MM.yyyy} {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
+            }
             // див. приклад як має бути виведено:
 
 
