@@ -46,7 +46,7 @@ namespace Practice_Linq_2024
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games.Where(p => p.Country == "Ukraine" && (p.Date.Year >= 2012 && p.Date.Year < 2013)).OrderBy(p => p.Date); // Корегуємо запит !!!
+            var selectedGames = games.Where(p => p.Country == "Ukraine" && (p.Date.Year == 2012)).OrderBy(p => p.Date); // Корегуємо запит !!!
 
 
             // Перевірка
@@ -85,7 +85,7 @@ namespace Practice_Linq_2024
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
 
-            var selectedGames = games.Where(p => p.Home_team == "France" && p.Country == "France" && (p.Date.Year >= 2021 && p.Date.Year < 2022) && p.Home_score == p.Away_score).OrderBy(p => p.Date);   // Корегуємо запит !!!
+            var selectedGames = games.Where(p => p.Home_team == "France" && p.Country == "France" && (p.Date.Year == 2021) && p.Home_score == p.Away_score).OrderBy(p => p.Date);   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
@@ -143,7 +143,7 @@ namespace Practice_Linq_2024
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            var selectedGames = games.Where(p => p.Tournament == "FIFA World Cup" && p.Date.Year >= 2022).OrderByDescending(p => p.Date).Take(8);   // Корегуємо запит !!!
+            var selectedGames = games.Where(p => p.Tournament == "FIFA World Cup" && p.Date.Year == 2022).OrderByDescending(p => p.Date).Take(8);   // Корегуємо запит !!!
 
 
             // Перевірка
