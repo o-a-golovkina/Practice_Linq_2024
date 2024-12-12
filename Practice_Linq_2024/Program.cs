@@ -66,14 +66,16 @@ namespace Practice_Linq_2024
         static void Query2(List<FootballGame> games)
         {
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.
-
-            var selectedGames = games; // Корегуємо запит !!!
+            DateTime dateFrom = new(2020, 1, 1);
+            var selectedGames = games.Where(p => (p.Home_team == "Italy" || p.Away_team == "Italy") && p.Date >= dateFrom && p.Tournament == "Friendly").OrderBy(p => p.Date); // Корегуємо запит !!!
 
 
             // Перевірка
-
             Console.WriteLine("\n======================== QUERY 2 ========================");
-
+            foreach (var game in selectedGames)
+            {
+                Console.WriteLine($"{game.Date:dd.MM.yyyy} {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
+            }
             // див. приклад як має бути виведено:
 
 
