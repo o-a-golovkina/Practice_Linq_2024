@@ -45,12 +45,17 @@ namespace Practice_Linq_2024
         static void Query1(List<FootballGame> games)
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
-
-            var selectedGames = games; // Корегуємо запит !!!
+            DateTime dateFrom = new(2012, 1, 1);
+            DateTime dateTo = new(2013, 1, 1);
+            var selectedGames = games.Where(p => p.Country == "Ukraine" && (p.Date >= dateFrom && p.Date < dateTo)).OrderBy(p => p.Date); // Корегуємо запит !!!
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 1 ========================");
+            foreach (var game in selectedGames)
+            {
+                Console.WriteLine($"{game.Date:dd.MM.yyyy} {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
+            }
 
             // див. приклад як має бути виведено:
 
@@ -60,12 +65,13 @@ namespace Practice_Linq_2024
         // Запит 2
         static void Query2(List<FootballGame> games)
         {
-            //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.  
+            //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.
 
             var selectedGames = games; // Корегуємо запит !!!
 
 
             // Перевірка
+
             Console.WriteLine("\n======================== QUERY 2 ========================");
 
             // див. приклад як має бути виведено:
