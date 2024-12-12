@@ -45,9 +45,8 @@ namespace Practice_Linq_2024
         static void Query1(List<FootballGame> games)
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
-            DateTime dateFrom = new(2012, 1, 1);
-            DateTime dateTo = new(2013, 1, 1);
-            var selectedGames = games.Where(p => p.Country == "Ukraine" && (p.Date >= dateFrom && p.Date < dateTo)).OrderBy(p => p.Date); // Корегуємо запит !!!
+
+            var selectedGames = games.Where(p => p.Country == "Ukraine" && (p.Date.Year >= 2012 && p.Date.Year < 2013)).OrderBy(p => p.Date); // Корегуємо запит !!!
 
 
             // Перевірка
@@ -66,8 +65,8 @@ namespace Practice_Linq_2024
         static void Query2(List<FootballGame> games)
         {
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.
-            DateTime dateFrom = new(2020, 1, 1);
-            var selectedGames = games.Where(p => (p.Home_team == "Italy" || p.Away_team == "Italy") && p.Date >= dateFrom && p.Tournament == "Friendly").OrderBy(p => p.Date); // Корегуємо запит !!!
+
+            var selectedGames = games.Where(p => (p.Home_team == "Italy" || p.Away_team == "Italy") && p.Date.Year >= 2020 && p.Tournament == "Friendly").OrderBy(p => p.Date); // Корегуємо запит !!!
 
 
             // Перевірка
@@ -85,9 +84,8 @@ namespace Practice_Linq_2024
         static void Query3(List<FootballGame> games)
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
-            DateTime dateFrom = new(2021, 1, 1);
-            DateTime dateTo = new(2022, 1, 1);
-            var selectedGames = games.Where(p => p.Home_team == "France" && p.Country == "France" && (p.Date >= dateFrom && p.Date < dateTo) && p.Home_score == p.Away_score).OrderBy(p => p.Date);   // Корегуємо запит !!!
+
+            var selectedGames = games.Where(p => p.Home_team == "France" && p.Country == "France" && (p.Date.Year >= 2021 && p.Date.Year < 2022) && p.Home_score == p.Away_score).OrderBy(p => p.Date);   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
@@ -104,9 +102,8 @@ namespace Practice_Linq_2024
         static void Query4(List<FootballGame> games)
         {
             //Query 4: Вивести всі матчі збірної Германії з 2018 року по 2020 рік (включно), в яких вона на виїзді програла.
-            DateTime dateFrom = new(2018, 1, 1);
-            DateTime dateTo = new(2021, 1, 1);
-            var selectedGames = games.Where(p => p.Away_team == "Germany" && (p.Date >= dateFrom && p.Date < dateTo) && p.Country != "Germany" && p.Away_score < p.Home_score);   // Корегуємо запит !!!
+
+            var selectedGames = games.Where(p => p.Away_team == "Germany" && (p.Date.Year >= 2018 && p.Date.Year < 2021) && p.Country != "Germany" && p.Away_score < p.Home_score);   // Корегуємо запит !!!
 
 
             // Перевірка
@@ -146,8 +143,7 @@ namespace Practice_Linq_2024
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            DateTime dateFrom = new(2022, 1, 1);
-            var selectedGames = games.Where(p => p.Tournament == "FIFA World Cup" && p.Date >= dateFrom).OrderByDescending(p => p.Date).Take(8);   // Корегуємо запит !!!
+            var selectedGames = games.Where(p => p.Tournament == "FIFA World Cup" && p.Date.Year >= 2022).OrderByDescending(p => p.Date).Take(8);   // Корегуємо запит !!!
 
 
             // Перевірка
